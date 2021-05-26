@@ -27,12 +27,12 @@ def create_es_distance(packer, es_distance_msg, pcm_cancel_cmd):
 
   return packer.make_can_msg("ES_Distance", 0, values)
 
-def create_es_lkas(packer, es_lkas_msg, visual_alert, left_line, right_line, left_ldw, right_ldw):
+def create_es_lkas(packer, es_lkas_msg, visual_alert, left_line, right_line, left_left_lane_depart, right_lane_depart):
 
   values = copy.copy(es_lkas_msg)
-  if right_ldw:
+  if right_lane_depart:
     values["LKAS_Alert"] = 11
-  elif left_ldw:
+  elif left_left_lane_depart:
     values["LKAS_Alert"] = 12
   elif visual_alert == VisualAlert.steerRequired:
     values["Keep_Hands_On_Wheel"] = 1
